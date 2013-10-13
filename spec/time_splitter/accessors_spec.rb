@@ -56,9 +56,14 @@ describe TimeSplitter::Accessors do
           expect(model.starts_at_date).to be_nil
         end
 
-        it "lets you modify the format" do
-          Model.split_accessor(:starts_at, format: "%D")
+        it "lets you modify the date_format" do
+          Model.split_accessor(:starts_at, date_format: "%D")
           expect(model.starts_at_date).to be_nil
+        end
+
+        it "lets you modify the time_format" do
+          Model.split_accessor(:starts_at, time_format: "%I:%M%p")
+          expect(model.starts_at_time).to be_nil
         end
 
         it "sets the appropiate parts of #starts_at" do
@@ -134,9 +139,14 @@ describe TimeSplitter::Accessors do
           expect(model.starts_at_date).to eq "2222-12-22"
         end
 
-        it "lets you modify the format" do
-          Model.split_accessor(:starts_at, format: "%D")
+        it "lets you modify the date_format" do
+          Model.split_accessor(:starts_at, date_format: "%D")
           expect(model.starts_at_date).to eq "12/22/22"
+        end
+
+        it "lets you modify the time_format" do
+          Model.split_accessor(:starts_at, time_format: "%I:%M%p")
+          expect(model.starts_at_time).to eq "01:44PM"
         end
 
         it "sets the appropiate parts of #starts_at" do
