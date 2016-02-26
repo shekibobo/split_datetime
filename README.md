@@ -4,7 +4,7 @@ TimeSplitter
 [![Gem Version](https://badge.fury.io/rb/time_splitter.png)](http://badge.fury.io/rb/time_splitter)
 [![Code Climate](https://codeclimate.com/github/shekibobo/time_splitter.png)](https://codeclimate.com/github/shekibobo/time_splitter)
 
-Setting DateTimes can be a difficult or ugly thing, especially through a web form. Finding a good DatePicker or TimePicker is easy, but getting them to work on both can be difficult. TimeSplitter automatically generates accessors for `date`, `time`, `hour`, and `min` on your datetime or time attributes, making it trivial to use different form inputs to set different parts of a datetime field.
+Setting DateTimes can be a difficult or ugly thing, especially through a web form. Finding a good DatePicker or TimePicker is easy, but getting them to work on both can be difficult. TimeSplitter automatically generates accessors for `date`, `year`, `month`, `day`, `time`, `hour`, and `min` on your datetime or time attributes, making it trivial to use different form inputs to set different parts of a datetime field.
 
 This gem is based on [SplitDatetime](https://github.com/michihuber/split_datetime) by [Michi Huber](https://github.com/michihuber). TimeSplitter improves on the gem, updating for Rails 4, adding `time` accessors, and providing a safer and more consistent default setting.
 
@@ -52,6 +52,9 @@ If you are using Rails < 4.0 and/or are not using StrongParameters, you must add
 By default, the read accessors provided by TimeSplitter are as follows:
 ```ruby
 starts_at_date #=> Date
+starts_at_year #=> Fixnum
+starts_at_month #=> Fixnum
+starts_at_day #=> Fixnum
 starts_at_time #=> Time or Timey class used in :default option
 starts_at_hour #=> Fixnum
 starts_at_min  #=> Fixnum

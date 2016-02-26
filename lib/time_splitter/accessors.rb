@@ -17,6 +17,21 @@ module TimeSplitter
 
         # Writers
 
+        define_method("#{attr}_year=") do |year|
+          return unless year.present?
+          self.send("#{attr}=", self.send("#{attr}_or_new").change(year: year))
+        end
+
+        define_method("#{attr}_month=") do |month|
+          return unless month.present?
+          self.send("#{attr}=", self.send("#{attr}_or_new").change(month: month))
+        end
+
+        define_method("#{attr}_day=") do |day|
+          return unless day.present?
+          self.send("#{attr}=", self.send("#{attr}_or_new").change(day: day))
+        end
+
         define_method("#{attr}_date=") do |date|
           return unless date.present?
           unless date.is_a?(Date) || date.is_a?(Time)
@@ -53,6 +68,18 @@ module TimeSplitter
         end
 
         # Readers
+        define_method("#{attr}_year") do
+          self.send(attr).try :month
+        end
+
+        define_method("#{attr}_month") do
+          self.send(attr).try :month
+        end
+
+        define_method("#{attr}_day") do
+          self.send(attr).try :day
+        end
+
         define_method("#{attr}_date") do
           date = self.send(attr).try :to_date
           date && options[:date_format] ? date.strftime(options[:date_format]) : date

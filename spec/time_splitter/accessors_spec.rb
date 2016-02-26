@@ -51,6 +51,54 @@ describe TimeSplitter::Accessors do
         end
       end
 
+      describe "#starts_at_year" do
+        it "returns nil" do
+          expect(model.starts_at_year).to be_nil
+        end
+
+        it "sets the year of starts_at" do
+          model.starts_at_year = 2015
+          expect(model.starts_at).to eq Time.new(2015, 1, 1, 0, 0, 0, '+00:00')
+        end
+
+        it "is nil if the string is empty" do
+          model.starts_at_year = ""
+          expect(model.starts_at).to be_nil
+        end
+      end
+
+      describe "#starts_at_month" do
+        it "returns nil" do
+          expect(model.starts_at_month).to be_nil
+        end
+
+        it "sets the month of starts_at" do
+          model.starts_at_month = 5
+          expect(model.starts_at).to eq Time.new(0, 5, 1, 0, 0, 0, '+00:00')
+        end
+
+        it "is nil if the string is empty" do
+          model.starts_at_month = ""
+          expect(model.starts_at).to be_nil
+        end
+      end
+
+      describe "#starts_at_day" do
+        it "returns nil" do
+          expect(model.starts_at_day).to be_nil
+        end
+
+        it "sets the month of starts_at" do
+          model.starts_at_day = 14
+          expect(model.starts_at).to eq Time.new(0, 1, 14, 0, 0, 0, '+00:00')
+        end
+
+        it "is nil if the string is empty" do
+          model.starts_at_day = ""
+          expect(model.starts_at).to be_nil
+        end
+      end
+
       describe "#starts_at_date" do
         it "returns nil" do
           expect(model.starts_at_date).to be_nil
